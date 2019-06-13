@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29009.5
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Envelopers", "Envelopers\Envelopers.csproj", "{6C37923B-FAB6-4B36-892D-CBA786E79D36}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{6C37923B-FAB6-4B36-892D-CBA786E79D36}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6C37923B-FAB6-4B36-892D-CBA786E79D36}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6C37923B-FAB6-4B36-892D-CBA786E79D36}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6C37923B-FAB6-4B36-892D-CBA786E79D36}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {D4DA16FD-F35E-452D-A14B-BF95A3FFD630}
+	EndGlobalSection
+EndGlobal
