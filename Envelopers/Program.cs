@@ -12,7 +12,7 @@ namespace Envelopers
 		{
 			Envelopes = ProcessFile("envelopes.csv");
 			Intro(Envelopes);
-			Console.WriteLine("What would you like to do?\n" +
+			Console.WriteLine("\n\nWhat would you like to do?\n" +
 				"1. Add Funds To An Envelope\n" +
 				"2. Delete Funds From An Envelope");
 			var input = Console.ReadLine();
