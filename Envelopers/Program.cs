@@ -36,8 +36,8 @@ namespace Envelopers
 		{
 			
 			Console.WriteLine("Current Envelope Balances");
-			Console.WriteLine("Date\t\t\t\t  Envelope\t\t\tAmount");
-			Console.WriteLine("--------------------------------------------------");
+			Console.WriteLine("{0,-30} {1, -10} {2,20}", "Date", "Envelope", "Amount");
+			Console.WriteLine("--------------------------------------------------------------");
 			var query =
 				from envelope in env
 				group envelope by envelope.Name into groups
@@ -48,7 +48,7 @@ namespace Envelopers
 			{
 				foreach ( var envelope in item.OrderByDescending(e => e.Date).Take(1))
 				{
-					Console.WriteLine($"{envelope.Date} | {envelope.Name} | {envelope.Amount}");
+					Console.WriteLine("{0,-30} {1,-10} {2,20}", $"{envelope.Date}", $"{envelope.Name}", $"{envelope.Amount:C}");
 				}
 			}
 		}
