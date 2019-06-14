@@ -17,16 +17,18 @@ namespace Envelopers
 			int input;
 			do
 			{
-				Console.WriteLine("\n\nWhat would you like to do?\n" +
-				"1. Add Funds To An Envelope\n" +
-				"2. Delete Funds From An Envelope\n" +
-				"3. Exit");
+				Console.WriteLine("\n\nWhat Would You Like To Do?\n" +
+				"1. Add Money To An Envelope\n" +
+				"2. Spend Money From an Envelope\n" +
+				"3. Create a New Envelope\n" +
+				"4. Delete an Envelope\n" +
+				"5. Exit");
 				input = int.Parse(Console.ReadLine());
 				Routing(input, Envelopes);
 				Envelopes = ProcessFile("envelopes.csv");
 				Intro(Envelopes);
 			}
-			while (input != 3);
+			while (input != 5);
 		}
 
 		private static List<Envelope> ProcessFile(string filePath)
@@ -43,8 +45,8 @@ namespace Envelopers
 		{
 			Console.Clear();
 			Console.WriteLine("Current Envelope Balances");
-			Console.WriteLine("{0,-30} {1, -10} {2,20}", "Date", "Envelope", "Amount");
-			Console.WriteLine("--------------------------------------------------------------");
+			Console.WriteLine("\n{0,-30} {1, -30} {2,20}", "Date Modified", "Envelope", "Amount");
+			Console.WriteLine("----------------------------------------------------------------------------------");
 			var query =
 				from envelope in env
 				group envelope by envelope.Name into groups
@@ -55,7 +57,7 @@ namespace Envelopers
 			{
 				foreach ( var envelope in item.OrderByDescending(e => e.Date).Take(1))
 				{
-					Console.WriteLine("{0,-30} {1,-10} {2,20}", $"{envelope.Date}", $"{envelope.Name}", $"{envelope.Amount:C}");
+					Console.WriteLine("{0,-30} {1,-30} {2,20}", $"{envelope.Date.ToShortDateString()}", $"{envelope.Name}", $"{envelope.Amount:C}");
 				}
 			}
 		}
@@ -75,6 +77,10 @@ namespace Envelopers
 					Console.WriteLine("Which Envelope did you spend money out of?");
 					envName = Console.ReadLine();
 					DeleteMoney(envName, envList);
+					break;
+
+				case 3:
+					CreateEnvelope();
 					break;
 			}
 		}
@@ -120,7 +126,6 @@ namespace Envelopers
 
 			Console.WriteLine("Press any key to go back to the main screen");
 			Console.ReadKey();
-			
 		}
 
 		public static void DeleteMoney(string env, List<Envelope> envList)
@@ -164,6 +169,32 @@ namespace Envelopers
 
 			Console.WriteLine("Press any key to go back to the main screen");
 			Console.ReadKey();
+		}
+
+		public static void CreateEnvelope()
+		{
+			
+			List<string> AddTo = new List<string>();
+			StringBuilder sb = new StringBuilder();
+			
+			Console.Clear();
+			Console.WriteLine("Creating A New Envelope");
+			Console.WriteLine("-----------------------");
+
+			Console.WriteLine("\nWhat would you like to name the envelope");
+			sb.Append(DateTime.Now);
+			sb.Append(",");
+			sb.Append(Console.ReadLine());
+			sb.Append(",");
+			sb.Append(0.00);
+			AddTo.Add(sb.ToString());
+			File.AppendAllLines("envelopes.csv", AddTo);
+
+			Console.WriteLine("Press any key to go back to the main screen");
+			Console.ReadKey();
+
+
+
 		}
 	}
 }
