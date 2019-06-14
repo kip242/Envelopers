@@ -13,8 +13,9 @@ namespace Envelopers
 				var columns = line.Split(',');
 				yield return new Envelope
 				{
-					Name = columns[0],
-					Amount = double.Parse(columns[1])
+					Date = DateTime.Parse(columns[0]),
+					Name = columns[1],
+					Amount = double.Parse(columns[2])
 				};
 			}
 		}
